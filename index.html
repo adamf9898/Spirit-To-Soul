@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirit To Soul - Biblical RPG Adventure</title>
+    <meta name="description" content="A massive online, open world action-adventure RPG inspired by the King James Version of The Bible">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="screen active">
+            <div class="loading-content">
+                <h1>Spirit To Soul</h1>
+                <p>"Hear what The Spirit says to the soul"</p>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <p class="loading-text">Loading Biblical Adventure...</p>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen">
+            <div class="menu-content">
+                <h1>Spirit To Soul</h1>
+                <p class="subtitle">Biblical Action-Adventure RPG</p>
+                <div class="menu-buttons">
+                    <button id="new-game-btn" class="menu-btn primary">Begin Your Journey</button>
+                    <button id="continue-btn" class="menu-btn">Continue Journey</button>
+                    <button id="multiplayer-btn" class="menu-btn">Fellowship Hall</button>
+                    <button id="scripture-btn" class="menu-btn">Scripture Study</button>
+                    <button id="settings-btn" class="menu-btn">Settings</button>
+                </div>
+                <div class="verse-of-day">
+                    <p class="verse-text" id="daily-verse">"For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end." - Jeremiah 29:11 (KJV)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Character Creation -->
+        <div id="character-creation" class="screen">
+            <div class="creation-content">
+                <h2>Create Your Character</h2>
+                <div class="character-form">
+                    <div class="form-group">
+                        <label for="character-name">Character Name:</label>
+                        <input type="text" id="character-name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Choose Your Path:</label>
+                        <div class="character-classes">
+                            <div class="class-option" data-class="disciple">
+                                <h3>Disciple</h3>
+                                <p>Follow in Christ's footsteps, spreading love and healing</p>
+                            </div>
+                            <div class="class-option" data-class="prophet">
+                                <h3>Prophet</h3>
+                                <p>Speak God's word with power and divine wisdom</p>
+                            </div>
+                            <div class="class-option" data-class="shepherd">
+                                <h3>Shepherd</h3>
+                                <p>Guide and protect the flock with courage</p>
+                            </div>
+                            <div class="class-option" data-class="scribe">
+                                <h3>Scribe</h3>
+                                <p>Master of scripture and divine knowledge</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="create-character-btn" class="btn primary">Begin Adventure</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game World -->
+        <div id="game-world" class="screen">
+            <div class="game-hud">
+                <div class="character-info">
+                    <div class="character-avatar"></div>
+                    <div class="character-stats">
+                        <div class="stat-bar health">
+                            <span>Health</span>
+                            <div class="bar"><div class="fill"></div></div>
+                        </div>
+                        <div class="stat-bar faith">
+                            <span>Faith</span>
+                            <div class="bar"><div class="fill"></div></div>
+                        </div>
+                        <div class="stat-bar wisdom">
+                            <span>Wisdom</span>
+                            <div class="bar"><div class="fill"></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quest-info">
+                    <h3 id="current-quest">Current Quest</h3>
+                    <p id="quest-description">Begin your spiritual journey...</p>
+                </div>
+                <div class="scripture-panel">
+                    <button id="scripture-toggle">📖 Scripture</button>
+                    <div id="scripture-display" class="hidden">
+                        <p id="current-scripture">Click to reveal God's word for this moment...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <canvas id="game-canvas" width="800" height="600"></canvas>
+            
+            <div class="game-controls">
+                <div class="action-buttons">
+                    <button class="action-btn" id="interact-btn">Interact</button>
+                    <button class="action-btn" id="inventory-btn">Inventory</button>
+                    <button class="action-btn" id="pray-btn">Pray</button>
+                    <button class="action-btn" id="fellowship-btn">Fellowship</button>
+                </div>
+                <div class="movement-controls">
+                    <div class="d-pad">
+                        <button class="move-btn" data-direction="up">↑</button>
+                        <button class="move-btn" data-direction="left">←</button>
+                        <button class="move-btn" data-direction="down">↓</button>
+                        <button class="move-btn" data-direction="right">→</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fellowship/Multiplayer Chat -->
+        <div id="fellowship-panel" class="panel hidden">
+            <div class="panel-header">
+                <h3>Fellowship Hall</h3>
+                <button id="close-fellowship">×</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="system-message">Welcome to the Fellowship Hall! Share scripture and encourage one another.</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Share your thoughts...">
+                <button id="send-chat">Send</button>
+            </div>
+        </div>
+
+        <!-- Inventory Panel -->
+        <div id="inventory-panel" class="panel hidden">
+            <div class="panel-header">
+                <h3>Spiritual Inventory</h3>
+                <button id="close-inventory">×</button>
+            </div>
+            <div class="inventory-grid" id="inventory-grid">
+                <!-- Inventory items will be populated here -->
+            </div>
+        </div>
+
+        <!-- Scripture Study Panel -->
+        <div id="scripture-study" class="screen">
+            <div class="study-content">
+                <h2>Scripture Study</h2>
+                <div class="scripture-search">
+                    <input type="text" id="scripture-search" placeholder="Search scriptures...">
+                    <button id="search-btn">Search</button>
+                </div>
+                <div class="scripture-results" id="scripture-results">
+                    <div class="scripture-verse">
+                        <h3>John 3:16 (KJV)</h3>
+                        <p>"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."</p>
+                    </div>
+                </div>
+                <button id="back-to-menu" class="btn">Back to Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/config.js"></script>
+    <script src="js/scripture.js"></script>
+    <script src="js/character.js"></script>
+    <script src="js/game-world.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/multiplayer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
