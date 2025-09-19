@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirit-To-Soul | Biblical Open World RPG</title>
+    <meta name="description" content="A massive online, open world action-adventure RPG inspired by the King James Version of The Bible. Hear what The Spirit says to the soul.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <h1 class="game-title">Spirit-To-Soul</h1>
+            <p class="game-subtitle">"Hear what The Spirit says to the soul"</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Loading biblical world...</p>
+            <div class="scripture-verse">
+                <p>"In the beginning was the Word, and the Word was with God, and the Word was God."</p>
+                <cite>- John 1:1 (KJV)</cite>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="main-menu hidden">
+        <div class="menu-background"></div>
+        <div class="menu-content">
+            <h1 class="game-title">Spirit-To-Soul</h1>
+            <p class="game-subtitle">Biblical Open World Adventure</p>
+            
+            <div class="menu-buttons">
+                <button id="new-game-btn" class="menu-btn primary">Begin Journey</button>
+                <button id="continue-btn" class="menu-btn" disabled>Continue Journey</button>
+                <button id="multiplayer-btn" class="menu-btn">Join Fellowship</button>
+                <button id="scripture-btn" class="menu-btn">Scripture Study</button>
+                <button id="settings-btn" class="menu-btn">Settings</button>
+            </div>
+
+            <div class="menu-verse">
+                <p>"And he said unto them, Follow me, and I will make you fishers of men."</p>
+                <cite>- Matthew 4:19 (KJV)</cite>
+            </div>
+        </div>
+    </div>
+
+    <!-- Character Creation -->
+    <div id="character-creation" class="character-creation hidden">
+        <div class="creation-content">
+            <h2>Create Your Disciple</h2>
+            <div class="creation-form">
+                <div class="form-group">
+                    <label for="character-name">Name thy disciple:</label>
+                    <input type="text" id="character-name" maxlength="20" placeholder="Enter name...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Choose thy calling:</label>
+                    <div class="calling-options">
+                        <div class="calling-card" data-calling="shepherd">
+                            <h3>Shepherd</h3>
+                            <p>Guide and protect the flock with wisdom and compassion</p>
+                            <ul>
+                                <li>+2 Wisdom</li>
+                                <li>+1 Faith</li>
+                                <li>+1 Compassion</li>
+                            </ul>
+                        </div>
+                        <div class="calling-card" data-calling="warrior">
+                            <h3>Warrior of Faith</h3>
+                            <p>Stand against darkness with righteous strength</p>
+                            <ul>
+                                <li>+2 Strength</li>
+                                <li>+1 Faith</li>
+                                <li>+1 Courage</li>
+                            </ul>
+                        </div>
+                        <div class="calling-card" data-calling="healer">
+                            <h3>Healer</h3>
+                            <p>Restore the sick and wounded through divine grace</p>
+                            <ul>
+                                <li>+2 Compassion</li>
+                                <li>+1 Wisdom</li>
+                                <li>+1 Faith</li>
+                            </ul>
+                        </div>
+                        <div class="calling-card" data-calling="teacher">
+                            <h3>Teacher</h3>
+                            <p>Share the Word and enlighten others</p>
+                            <ul>
+                                <li>+2 Wisdom</li>
+                                <li>+1 Compassion</li>
+                                <li>+1 Understanding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="create-character-btn" class="menu-btn primary" disabled>Begin Your Journey</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Interface -->
+    <div id="game-interface" class="game-interface hidden">
+        <!-- Game Canvas -->
+        <canvas id="game-canvas" width="1200" height="800"></canvas>
+        
+        <!-- UI Overlay -->
+        <div class="ui-overlay">
+            <!-- Top HUD -->
+            <div class="top-hud">
+                <div class="character-info">
+                    <div class="character-name" id="player-name">Disciple</div>
+                    <div class="character-level" id="player-level">Level 1</div>
+                </div>
+                
+                <div class="resources">
+                    <div class="resource faith">
+                        <span class="resource-label">Faith</span>
+                        <div class="resource-bar">
+                            <div class="resource-fill" id="faith-bar"></div>
+                        </div>
+                        <span class="resource-value" id="faith-value">100/100</span>
+                    </div>
+                    <div class="resource health">
+                        <span class="resource-label">Health</span>
+                        <div class="resource-bar">
+                            <div class="resource-fill" id="health-bar"></div>
+                        </div>
+                        <span class="resource-value" id="health-value">100/100</span>
+                    </div>
+                </div>
+
+                <div class="minimap">
+                    <canvas id="minimap-canvas" width="150" height="150"></canvas>
+                </div>
+            </div>
+
+            <!-- Action Bar -->
+            <div class="action-bar">
+                <div class="ability-slots">
+                    <div class="ability-slot" data-key="1">
+                        <div class="ability-icon prayer"></div>
+                        <span class="hotkey">1</span>
+                    </div>
+                    <div class="ability-slot" data-key="2">
+                        <div class="ability-icon blessing"></div>
+                        <span class="hotkey">2</span>
+                    </div>
+                    <div class="ability-slot" data-key="3">
+                        <div class="ability-icon scripture"></div>
+                        <span class="hotkey">3</span>
+                    </div>
+                    <div class="ability-slot" data-key="4">
+                        <div class="ability-icon healing"></div>
+                        <span class="hotkey">4</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat/Gospel Sharing -->
+            <div class="chat-panel">
+                <div class="chat-header">
+                    <span>Fellowship Chat</span>
+                    <button class="chat-toggle" id="chat-toggle">_</button>
+                </div>
+                <div class="chat-content" id="chat-content">
+                    <div class="chat-message system">
+                        <span class="message-text">Welcome to Spirit-To-Soul! Share the Gospel and grow in fellowship.</span>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Share your thoughts or scripture...">
+                    <button id="send-message">Send</button>
+                </div>
+            </div>
+
+            <!-- Quest Panel -->
+            <div class="quest-panel" id="quest-panel">
+                <div class="quest-header">
+                    <h3>Current Quest</h3>
+                    <button class="panel-close" id="quest-close">×</button>
+                </div>
+                <div class="quest-content">
+                    <div class="quest-title" id="current-quest-title">The Great Commission</div>
+                    <div class="quest-description" id="current-quest-desc">
+                        Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost.
+                    </div>
+                    <div class="quest-objectives">
+                        <h4>Objectives:</h4>
+                        <ul id="quest-objectives-list">
+                            <li class="objective incomplete">Explore the starting village</li>
+                            <li class="objective incomplete">Speak with the Elder</li>
+                            <li class="objective incomplete">Learn your first scripture</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="mobile-controls">
+            <div class="movement-controls">
+                <div class="dpad">
+                    <button class="dpad-btn up" data-direction="up">↑</button>
+                    <button class="dpad-btn left" data-direction="left">←</button>
+                    <button class="dpad-btn right" data-direction="right">→</button>
+                    <button class="dpad-btn down" data-direction="down">↓</button>
+                </div>
+            </div>
+            <div class="action-controls">
+                <button class="action-btn interact">Interact</button>
+                <button class="action-btn menu">Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripture Modal -->
+    <div id="scripture-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Scripture Study</h2>
+                <button class="modal-close" id="scripture-close">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="scripture-passage">
+                    <p id="scripture-text">"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."</p>
+                    <cite id="scripture-reference">John 3:16 (KJV)</cite>
+                </div>
+                <div class="scripture-reflection">
+                    <h3>Reflection</h3>
+                    <p id="scripture-meditation">This verse speaks to the ultimate expression of God's love for humanity...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Scripts -->
+    <script src="js/core/GameEngine.js"></script>
+    <script src="js/core/Player.js"></script>
+    <script src="js/core/World.js"></script>
+    <script src="js/core/Quest.js"></script>
+    <script src="js/core/Scripture.js"></script>
+    <script src="js/systems/InputSystem.js"></script>
+    <script src="js/systems/RenderSystem.js"></script>
+    <script src="js/systems/AudioSystem.js"></script>
+    <script src="js/ui/UIManager.js"></script>
+    <script src="js/ui/MenuSystem.js"></script>
+    <script src="js/ui/ChatSystem.js"></script>
+    <script src="js/data/BiblicalData.js"></script>
+    <script src="js/data/QuestData.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

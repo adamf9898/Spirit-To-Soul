@@ -1,0 +1,258 @@
+/* Spirit-To-Soul Main Styles */
+
+/* CSS Variables for theming */
+:root {
+    --primary-gold: #FFD700;
+    --secondary-gold: #B8860B;
+    --ancient-blue: #1e3a8a;
+    --deep-purple: #4c1d95;
+    --holy-white: #fefefe;
+    --sacred-cream: #fef7cd;
+    --stone-gray: #6b7280;
+    --dark-gray: #374151;
+    --shadow-black: #111827;
+    
+    --font-title: 'Cinzel', serif;
+    --font-body: 'Libre Baskerville', serif;
+    
+    --transition-smooth: all 0.3s ease;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, var(--ancient-blue) 0%, var(--deep-purple) 100%);
+    color: var(--holy-white);
+    overflow: hidden;
+    height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--shadow-black) 0%, var(--ancient-blue) 50%, var(--deep-purple) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.loading-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.game-title {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.game-subtitle {
+    font-size: 1.5rem;
+    color: var(--sacred-cream);
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+
+.loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+    width: 0;
+    transition: width 0.3s ease;
+    animation: loading-pulse 2s infinite;
+}
+
+@keyframes loading-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.loading-text {
+    color: var(--sacred-cream);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.scripture-verse {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-gold);
+}
+
+.scripture-verse p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.scripture-verse cite {
+    color: var(--primary-gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Main Menu */
+.main-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+}
+
+.menu-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="2" height="2"><rect width="2" height="2" fill="%23000"/><circle cx="1" cy="1" r="0.3" fill="%23333"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'),
+                linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(76, 29, 149, 0.9) 100%);
+    filter: blur(1px);
+}
+
+.menu-content {
+    position: relative;
+    text-align: center;
+    max-width: 500px;
+    padding: 3rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    border: 2px solid var(--primary-gold);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.menu-buttons {
+    margin: 2rem 0;
+}
+
+.menu-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem 2rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid var(--secondary-gold);
+    color: var(--holy-white);
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-btn:hover:not(:disabled) {
+    background: var(--primary-gold);
+    color: var(--shadow-black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.menu-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.menu-btn.primary {
+    background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+    color: var(--shadow-black);
+    border-color: var(--primary-gold);
+}
+
+.menu-btn.primary:hover {
+    background: linear-gradient(135deg, var(--secondary-gold), var(--primary-gold));
+    transform: translateY(-2px) scale(1.02);
+}
+
+.menu-verse {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--primary-gold);
+}
+
+.menu-verse p {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.menu-verse cite {
+    color: var(--primary-gold);
+    font-size: 0.85rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 2.5rem;
+    }
+    
+    .game-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .loading-content,
+    .menu-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .menu-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 2rem;
+    }
+    
+    .loading-content,
+    .menu-content {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+}

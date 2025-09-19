@@ -1,0 +1,818 @@
+/* Spirit-To-Soul Game Interface Styles */
+
+/* Character Creation */
+.character-creation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--ancient-blue) 0%, var(--deep-purple) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 400;
+}
+
+.creation-content {
+    max-width: 900px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    border: 2px solid var(--primary-gold);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.creation-content h2 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--primary-gold);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.creation-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--primary-gold);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--secondary-gold);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--holy-white);
+    font-family: var(--font-body);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+}
+
+.calling-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.calling-card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--stone-gray);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.calling-card:hover {
+    border-color: var(--primary-gold);
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.calling-card.selected {
+    border-color: var(--primary-gold);
+    background: rgba(255, 215, 0, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+}
+
+.calling-card h3 {
+    font-family: var(--font-title);
+    color: var(--primary-gold);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.calling-card p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.calling-card ul {
+    list-style: none;
+}
+
+.calling-card li {
+    padding: 0.2rem 0;
+    font-size: 0.85rem;
+    color: var(--sacred-cream);
+}
+
+.calling-card li:before {
+    content: "★ ";
+    color: var(--primary-gold);
+}
+
+/* Game Interface */
+.game-interface {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--shadow-black);
+}
+
+#game-canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--dark-gray);
+    background: #2a5934; /* Grassy green for biblical lands */
+}
+
+/* UI Overlay */
+.ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.ui-overlay > * {
+    pointer-events: auto;
+}
+
+/* Top HUD */
+.top-hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+.character-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.character-name {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--primary-gold);
+    font-weight: 600;
+}
+
+.character-level {
+    font-size: 0.9rem;
+    color: var(--sacred-cream);
+}
+
+.resources {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.resource {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--stone-gray);
+}
+
+.resource-label {
+    font-size: 0.85rem;
+    color: var(--sacred-cream);
+    min-width: 40px;
+}
+
+.resource-bar {
+    width: 100px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.resource-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.faith .resource-fill {
+    background: linear-gradient(90deg, var(--primary-gold), #fff);
+}
+
+.health .resource-fill {
+    background: linear-gradient(90deg, #dc2626, #ef4444);
+}
+
+.resource-value {
+    font-size: 0.8rem;
+    color: var(--holy-white);
+    min-width: 60px;
+    text-align: right;
+}
+
+.minimap {
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--stone-gray);
+    border-radius: var(--border-radius);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#minimap-canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: calc(var(--border-radius) - 2px);
+}
+
+/* Action Bar */
+.action-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 2px solid var(--stone-gray);
+}
+
+.ability-slots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ability-slot {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--stone-gray);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.ability-slot:hover {
+    border-color: var(--primary-gold);
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.ability-slot.active {
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.ability-icon {
+    width: 30px;
+    height: 30px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    position: relative;
+}
+
+.ability-icon.prayer:after {
+    content: "🙏";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+
+.ability-icon.blessing:after {
+    content: "✨";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+
+.ability-icon.scripture:after {
+    content: "📖";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+
+.ability-icon.healing:after {
+    content: "❤️";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+}
+
+.hotkey {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 16px;
+    height: 16px;
+    background: var(--shadow-black);
+    color: var(--primary-gold);
+    font-size: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Chat Panel */
+.chat-panel {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--stone-gray);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--ancient-blue);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-bottom: 1px solid var(--stone-gray);
+}
+
+.chat-header span {
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    color: var(--primary-gold);
+}
+
+.chat-toggle {
+    background: none;
+    border: none;
+    color: var(--primary-gold);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.chat-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.chat-message {
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.chat-message.system .message-text {
+    color: var(--primary-gold);
+    font-style: italic;
+}
+
+.chat-message.player .message-text {
+    color: var(--holy-white);
+}
+
+.chat-message.npc .message-text {
+    color: var(--sacred-cream);
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid var(--stone-gray);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    color: var(--holy-white);
+    font-size: 0.85rem;
+}
+
+.chat-input input:focus {
+    outline: none;
+}
+
+.chat-input button {
+    padding: 0.5rem 1rem;
+    background: var(--ancient-blue);
+    border: none;
+    color: var(--primary-gold);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.chat-input button:hover {
+    background: var(--primary-gold);
+    color: var(--shadow-black);
+}
+
+/* Quest Panel */
+.quest-panel {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    width: 350px;
+    max-height: 400px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--primary-gold);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+}
+
+.quest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--ancient-blue);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-bottom: 1px solid var(--primary-gold);
+}
+
+.quest-header h3 {
+    font-family: var(--font-title);
+    color: var(--primary-gold);
+    font-size: 1.1rem;
+}
+
+.panel-close {
+    background: none;
+    border: none;
+    color: var(--primary-gold);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quest-content {
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.quest-title {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--primary-gold);
+    margin-bottom: 0.5rem;
+}
+
+.quest-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: var(--sacred-cream);
+}
+
+.quest-objectives h4 {
+    font-family: var(--font-title);
+    color: var(--primary-gold);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#quest-objectives-list {
+    list-style: none;
+}
+
+.objective {
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.objective.incomplete:before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: var(--stone-gray);
+}
+
+.objective.complete:before {
+    content: "☑";
+    position: absolute;
+    left: 0;
+    color: var(--primary-gold);
+}
+
+.objective.complete {
+    text-decoration: line-through;
+    color: var(--stone-gray);
+}
+
+/* Mobile Controls */
+.mobile-controls {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: none;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.movement-controls {
+    display: flex;
+    align-items: center;
+}
+
+.dpad {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.dpad-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--stone-gray);
+    color: var(--holy-white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dpad-btn:active {
+    background: var(--primary-gold);
+    color: var(--shadow-black);
+}
+
+.dpad-btn.up {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dpad-btn.down {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dpad-btn.left {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dpad-btn.right {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.action-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    padding: 0.8rem 1.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--stone-gray);
+    color: var(--holy-white);
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+}
+
+.action-btn:active {
+    background: var(--primary-gold);
+    color: var(--shadow-black);
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    max-width: 600px;
+    max-height: 80vh;
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid var(--primary-gold);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: var(--ancient-blue);
+    border-bottom: 1px solid var(--primary-gold);
+}
+
+.modal-header h2 {
+    font-family: var(--font-title);
+    color: var(--primary-gold);
+    font-size: 1.5rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--primary-gold);
+    cursor: pointer;
+    font-size: 1.8rem;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.scripture-passage {
+    background: rgba(255, 215, 0, 0.1);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-gold);
+    margin-bottom: 1.5rem;
+}
+
+.scripture-passage p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.scripture-passage cite {
+    color: var(--primary-gold);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.scripture-reflection h3 {
+    font-family: var(--font-title);
+    color: var(--primary-gold);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.scripture-reflection p {
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: flex;
+    }
+    
+    .chat-panel {
+        width: 250px;
+        height: 150px;
+    }
+    
+    .quest-panel {
+        width: 280px;
+        right: 10px;
+        top: 90px;
+    }
+    
+    .top-hud {
+        padding: 0.5rem 1rem;
+        height: 70px;
+    }
+    
+    .resources {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .resource {
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .resource-bar {
+        width: 80px;
+    }
+    
+    .minimap {
+        width: 100px;
+        height: 100px;
+    }
+    
+    #game-canvas {
+        width: 95vw;
+        height: 60vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .creation-content {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .calling-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .chat-panel {
+        width: 200px;
+        height: 120px;
+        left: 10px;
+    }
+    
+    .quest-panel {
+        width: 250px;
+        right: 5px;
+        top: 80px;
+    }
+    
+    .action-bar {
+        bottom: 120px;
+        padding: 0.5rem;
+    }
+    
+    .ability-slot {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .ability-icon {
+        width: 24px;
+        height: 24px;
+    }
+}
