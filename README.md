@@ -1,2 +1,3 @@
-# Spirit-To-Soul
-Hear what the Spirit says to the Soul
+A massive online, open world action-adventure RPG inspired by the King James Version of The Bible. Experience immersive gameplay where you explore diverse environments, complete scripture-based quests, and interact with characters and events rooted in biblical teachings. Share The Gospel through dynamic storytelling, meaningful choices, and engaging multiplayer features that encourage discussion, discovery, and spiritual growth.
+
+"Hear what The Spirit says to the soul in this action, adventure, chaotic, open world, role playing, web game based on sharing The Gospel and scripture from The King James Version of The BIBLE."
