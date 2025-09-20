@@ -1,0 +1,122 @@
+{
+  "name": "Spirit To Soul - Biblical RPG Adventure",
+  "short_name": "Spirit To Soul",
+  "description": "A massive online, open world action-adventure RPG inspired by the King James Version of The Bible. Experience immersive gameplay where you explore diverse environments, complete scripture-based quests, and interact with characters and events rooted in biblical teachings.",
+  "version": "1.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#8B4513",
+  "background_color": "#2F1B14",
+  "lang": "en",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "assets/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "education", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "assets/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Main game interface showing biblical world map"
+    },
+    {
+      "src": "assets/screenshot2.png",
+      "sizes": "640x1136",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Character creation and scripture study"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Continue Journey",
+      "short_name": "Continue",
+      "description": "Resume your spiritual adventure",
+      "url": "/?action=continue",
+      "icons": [
+        {
+          "src": "assets/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Scripture Study",
+      "short_name": "Scripture",
+      "description": "Study the Word of God",
+      "url": "/?action=scripture",
+      "icons": [
+        {
+          "src": "assets/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Fellowship Hall",
+      "short_name": "Fellowship",
+      "description": "Connect with other believers",
+      "url": "/?action=fellowship",
+      "icons": [
+        {
+          "src": "assets/icon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}
