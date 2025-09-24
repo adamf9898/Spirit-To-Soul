@@ -1,5 +1,15 @@
-// Main Game Manager - Coordinates all game systems
+/**
+ * GameManager - Central orchestrator for all game systems in Spirit-To-Soul
+ * Manages initialization, coordinates between systems, handles player progression,
+ * and maintains game state throughout the biblical RPG experience.
+ * 
+ * @class GameManager
+ */
 class GameManager {
+    /**
+     * Creates a new GameManager instance and begins initialization
+     * @constructor
+     */
     constructor() {
         this.player = null;
         this.gameWorld = null;
@@ -14,6 +24,12 @@ class GameManager {
         this.initialize();
     }
     
+    /**
+     * Initializes all game systems and sets up global references
+     * @async
+     * @returns {Promise<void>}
+     * @throws {Error} When system initialization fails
+     */
     async initialize() {
         try {
             // Initialize core systems
@@ -39,6 +55,11 @@ class GameManager {
         }
     }
     
+    /**
+     * Displays a loading sequence with spiritual-themed progress messages
+     * @async
+     * @returns {Promise<void>}
+     */
     async startLoadingSequence() {
         // Simulate loading with progress updates
         const loadingSteps = [
@@ -66,6 +87,10 @@ class GameManager {
         }, 500);
     }
     
+    /**
+     * Updates the loading screen text display
+     * @param {string} text - The message to display
+     */
     updateLoadingText(text) {
         const loadingText = document.querySelector('.loading-text');
         if (loadingText) {
@@ -73,6 +98,10 @@ class GameManager {
         }
     }
     
+    /**
+     * Updates the loading progress bar
+     * @param {number} percentage - Progress percentage (0-100)
+     */
     updateLoadingProgress(percentage) {
         const progressBar = document.querySelector('.loading-progress');
         if (progressBar) {
@@ -80,10 +109,18 @@ class GameManager {
         }
     }
     
+    /**
+     * Creates a promise that resolves after the specified delay
+     * @param {number} ms - Milliseconds to wait
+     * @returns {Promise<void>}
+     */
     delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
     
+    /**
+     * Sets up global event listeners for game management
+     */
     setupEventListeners() {
         // Listen for multiplayer updates
         window.addEventListener('multiplayerUpdate', (e) => {
@@ -260,13 +297,23 @@ class GameManager {
             window.dispatchEvent(new CustomEvent('characterUpdate'));
             this.uiManager?.showNotification('Quest Complete!', `You completed: ${quest.title}`);
         }
-    }
+    /**
+     * Scripture Integration Methods
+     */
     
-    // Scripture Integration
+    /**
+     * Retrieves a contextually appropriate scripture verse for the current game situation
+     * @param {string} context - The game context (prayer, healing, fellowship, etc.)
+     * @returns {Object|null} Scripture verse object with reference and text, or null if none found
+     */
     getRandomScriptureForContext(context) {
         return this.scriptureManager?.getContextualVerse(context);
     }
     
+    /**
+     * Processes scripture memorization for the player character
+     * @param {string} reference - Biblical reference (e.g., "John 3:16")
+     */
     memorizeScripture(reference) {
         if (this.player) {
             this.player.memorizeScripture(reference);
@@ -281,7 +328,14 @@ class GameManager {
         }
     }
     
-    // Save/Load System
+    /**
+     * Save/Load System Methods
+     */
+    
+    /**
+     * Saves the current game state to localStorage
+     * @returns {boolean} True if save was successful, false otherwise
+     */
     saveGame() {
         if (!this.player) return false;
         

@@ -1,8 +1,24 @@
 # Spirit To Soul - Biblical RPG Adventure
 
+[![PWA Ready](https://img.shields.io/badge/PWA-Ready-green.svg)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
+[![KJV Scripture](https://img.shields.io/badge/Scripture-KJV-blue.svg)](https://www.kingjamesbibleonline.org/)
+[![Fellowship Ready](https://img.shields.io/badge/Fellowship-Community-purple.svg)](#-fellowship-features)
+
 A massive online, open world action-adventure RPG inspired by the King James Version of The Bible. Experience immersive gameplay where you explore diverse environments, complete scripture-based quests, and interact with characters and events rooted in biblical teachings.
 
 *"Hear what The Spirit says to the soul in this action, adventure, chaotic, open world, role playing, web game based on sharing The Gospel and scripture from The King James Version of The BIBLE."*
+
+## 📋 Table of Contents
+- [🎮 Game Features](#-game-features)
+- [🚀 Getting Started](#-getting-started)
+- [🎯 Character Classes](#-character-classes)  
+- [🗺️ Biblical Locations](#️-biblical-locations)
+- [📖 Scripture Features](#-scripture-features)
+- [🤝 Fellowship Features](#-fellowship-features)
+- [🛠️ Development](#️-development)
+- [📚 Documentation](#-documentation)
+- [🙏 Spiritual Purpose](#-spiritual-purpose)
+- [📞 Support & Feedback](#-support--feedback)
 
 ## 🎮 Game Features
 
@@ -122,6 +138,7 @@ The game includes carefully selected verses from the King James Version of the B
 
 ## 🛠️ Development
 
+### Technology Stack
 This game is built with modern web technologies:
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
@@ -130,20 +147,158 @@ This game is built with modern web technologies:
 - **PWA**: Service Worker for offline functionality
 - **Architecture**: Modular JavaScript with component-based design
 
+### Quick Start for Developers
+
+```bash
+# Clone the repository
+git clone https://github.com/adamf9898/Spirit-To-Soul.git
+cd Spirit-To-Soul
+
+# Serve locally (choose one method)
+python3 -m http.server 8000
+# OR
+npx serve .
+# OR  
+php -S localhost:8000
+
+# Open in browser
+open http://localhost:8000
+```
+
+### Project Structure
+```
+Spirit-To-Soul/
+├── index.html              # Main application entry point
+├── manifest.json           # PWA configuration
+├── sw.js                   # Service Worker for offline functionality
+├── css/
+│   └── styles.css          # Game styling and responsive design
+├── js/
+│   ├── config.js           # Game constants and character classes
+│   ├── main.js             # GameManager - system orchestration
+│   ├── scripture.js        # ScriptureManager - biblical content
+│   ├── character.js        # Character - player progression
+│   ├── ui.js               # UIManager - interface coordination  
+│   ├── game-world.js       # GameWorld - canvas rendering
+│   └── multiplayer.js      # MultiplayerManager - fellowship
+├── assets/                 # Icons, images, and media files
+└── docs/                   # Comprehensive documentation
+    ├── architecture-diagrams.md
+    ├── glossary.md
+    └── configuration.md
+```
+
+### Core Architecture
+The game follows a modular, event-driven architecture:
+
+- **GameManager** (`main.js`) - Central coordinator for all systems
+- **ScriptureManager** (`scripture.js`) - KJV Bible verse management and quest generation
+- **Character** (`character.js`) - Player progression and spiritual growth tracking
+- **UIManager** (`ui.js`) - Interface management and user interaction
+- **GameWorld** (`game-world.js`) - Canvas rendering and biblical world simulation
+- **MultiplayerManager** (`multiplayer.js`) - Fellowship community features
+
+### Development Workflow
+
+1. **No Build Process Required** - Direct file serving for development
+2. **Browser DevTools** - Use console for debugging and state inspection
+3. **Live Reload** - Manual refresh needed (or use live-server for auto-reload)
+4. **Testing** - Manual testing in browser, PWA testing with Chrome DevTools
+
+### Key Development Commands
+
+```javascript
+// Access game state in browser console
+window.gameManager.player         // Current character
+window.scriptureManager.verses   // All scripture content
+window.uiManager.currentScreen   // Current UI state
+
+// Debug character progression
+window.gameManager.player.gainExperience(100)
+window.gameManager.player.memorizeScripture('John 3:16')
+window.gameManager.player.pray()
+```
+
+## 📚 Documentation
+
+### For Developers
+- **[🤖 GitHub Copilot Instructions](.github/copilot-instructions.md)** - AI coding agent guidelines
+- **[🏗️ Architecture Diagrams](docs/architecture-diagrams.md)** - System architecture and data flow
+- **[📋 Glossary](docs/glossary.md)** - Complete terminology reference
+- **[⚙️ Configuration](docs/configuration.md)** - Setup and configuration guide
+
+### Module Documentation
+- **[main.js Purpose](js/main.js.purpose.md)** | **[Tutorial](js/main.js.tutorial.md)**
+- **[scripture.js Purpose](js/scripture.js.purpose.md)** | **[Tutorial](js/scripture.js.tutorial.md)**
+- **[character.js Purpose](js/character.js.purpose.md)** | **[Tutorial](js/character.js.tutorial.md)**
+- **[ui.js Purpose](js/ui.js.purpose.md)**
+- **[game-world.js Purpose](js/game-world.js.purpose.md)**
+- **[multiplayer.js Purpose](js/multiplayer.js.purpose.md)**
+- **[config.js Purpose](js/config.js.purpose.md)**
+
+### Getting Started Guides
+
+#### For Players
+1. **Installation**: Visit the website and click "Install App" for offline access
+2. **Character Creation**: Choose your biblical character class and spiritual path
+3. **Tutorial Quest**: Complete the welcome quest to learn game mechanics
+4. **Fellowship**: Join the community for encouragement and scripture sharing
+
+#### For Ministry Leaders
+1. **Educational Use**: Engage youth and adults with interactive Bible study
+2. **Small Group Integration**: Use fellowship features for group activities
+3. **Scripture Memorization**: Encourage biblical memorization through gameplay
+4. **Community Building**: Foster spiritual connections through shared activities
+
+#### For Contributors
+1. **Fork the Repository**: Create your own copy for modifications
+2. **Read Documentation**: Review architecture and coding guidelines
+3. **Test Changes**: Ensure functionality across devices and browsers
+4. **Submit Pull Request**: Share improvements with the community
+
 ## 🙏 Spiritual Purpose
 
 Spirit To Soul is more than just a game - it's a digital ministry tool designed to:
 
-- **Encourage spiritual growth** through interactive Bible study
-- **Build community** among believers worldwide
-- **Share the Gospel** through engaging storytelling
-- **Memorize scripture** in an enjoyable way
-- **Practice spiritual disciplines** like prayer and meditation
-- **Support fellow believers** through fellowship and encouragement
+- **🌱 Encourage spiritual growth** through interactive Bible study
+- **🌍 Build community** among believers worldwide  
+- **📢 Share the Gospel** through engaging storytelling
+- **📖 Memorize scripture** in an enjoyable way
+- **🙏 Practice spiritual disciplines** like prayer and meditation
+- **🤗 Support fellow believers** through fellowship and encouragement
+
+### Biblical Foundation
+> *"Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth."* - 2 Timothy 2:15
+
+The game integrates authentic KJV scripture into every aspect of gameplay, creating opportunities for:
+- **Scripture Memorization** - Hide God's word in your heart through interactive gameplay
+- **Biblical History** - Explore the lands and events of biblical times
+- **Spiritual Disciplines** - Develop consistent prayer and study habits
+- **Christian Fellowship** - Connect with believers for mutual encouragement
+- **Evangelism** - Share the Gospel through compelling spiritual narratives
 
 ## 📞 Support & Feedback
 
-For support, feedback, or to report issues, please reach out through the game's Fellowship Hall or contact the development team.
+### Community Support
+- **Fellowship Hall**: In-game community for player support and encouragement
+- **Prayer Requests**: Share spiritual needs with the community
+- **Scripture Sharing**: Exchange favorite verses and insights
+
+### Technical Support
+- **Issues**: Report bugs and technical problems through GitHub Issues
+- **Feature Requests**: Suggest new biblical content and gameplay features
+- **Documentation**: Contribute to guides and tutorials for other players
+
+### Ministry Inquiries
+For churches, ministries, and educational organizations interested in using Spirit-To-Soul:
+- Custom content development
+- Educational integration support  
+- Community moderation and guidance
+- Spiritual mentorship program setup
+
+---
+
+*"Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord."* - Colossians 3:16
 
 ## 📜 Scripture Foundation
 

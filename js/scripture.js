@@ -1,11 +1,25 @@
-// Scripture Database and Management
+/**
+ * ScriptureManager - Manages King James Version Bible verses and scripture-based features
+ * Provides verse lookup, contextual delivery, quest generation, and spiritual content management
+ * for the Spirit-To-Soul biblical RPG experience.
+ * 
+ * @class ScriptureManager
+ */
 class ScriptureManager {
+    /**
+     * Creates a new ScriptureManager instance and initializes the scripture database
+     * @constructor
+     */
     constructor() {
         this.verses = this.initializeScriptures();
         this.currentVerse = null;
         this.bookmarks = this.loadBookmarks();
     }
     
+    /**
+     * Initializes the King James Version scripture database
+     * @returns {Object} Dictionary of scripture references mapped to verse text
+     */
     initializeScriptures() {
         return {
             // Genesis
@@ -76,7 +90,14 @@ class ScriptureManager {
         };
     }
     
-    // Get a random verse
+    /**
+     * Verse Retrieval Methods
+     */
+    
+    /**
+     * Retrieves a random verse from the scripture database
+     * @returns {Object} Verse object with reference and text properties
+     */
     getRandomVerse() {
         const references = Object.keys(this.verses);
         const randomRef = references[Math.floor(Math.random() * references.length)];
@@ -86,7 +107,11 @@ class ScriptureManager {
         };
     }
     
-    // Get verse by reference
+    /**
+     * Retrieves a specific verse by biblical reference
+     * @param {string} reference - Biblical reference (e.g., "John 3:16")
+     * @returns {Object|null} Verse object with reference and text, or null if not found
+     */
     getVerse(reference) {
         if (this.verses[reference]) {
             return {
@@ -97,7 +122,11 @@ class ScriptureManager {
         return null;
     }
     
-    // Search verses by text content
+    /**
+     * Searches for verses containing the specified query text
+     * @param {string} query - Search term or phrase to find in verse content
+     * @returns {Array<Object>} Array of matching verse objects with relevance scoring
+     */
     searchVerses(query) {
         const results = [];
         const searchTerm = query.toLowerCase();
